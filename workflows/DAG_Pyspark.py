@@ -8,7 +8,7 @@ from airflow.providers.google.cloud.operators.dataproc import (
 #define the variables
 
 PROJECT_ID = "project-66ab2fa5-e082-4e6e-9c4"
-REGION = "us-central1"
+REGION = "us-east4"
 CLUSTER_NAME = "my-demo-cluster"
 COMPOSER_BUCKET = "us-central1-demo-instance-3f1d41a0-bucket"
 
