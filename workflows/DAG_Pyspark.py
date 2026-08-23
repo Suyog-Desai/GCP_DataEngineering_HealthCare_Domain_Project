@@ -2,7 +2,7 @@
 from airflow import DAG
 from datetime import timedelta
 from airflow.providers.google.cloud.operators.dataproc import ( 
-    DataprocstartClusterOperator, DataprocStopClusterOperator, DataprocSubmitJobOperator
+    DataprocStartClusterOperator, DataprocStopClusterOperator, DataprocSubmitJobOperator
 )
 
 #define the variables
@@ -10,7 +10,7 @@ from airflow.providers.google.cloud.operators.dataproc import (
 PROJECT_ID = "project-66ab2fa5-e082-4e6e-9c4"
 REGION = "us-central1"
 CLUSTER_NAME = "my-demo-cluster"
-COMPOSER_BUCKET = " us-central1-demo-instance-3f1d41a0-bucket"
+COMPOSER_BUCKET = "us-central1-demo-instance-3f1d41a0-bucket"
 
 JOB_FILE_1_GCS = f"gs://{COMPOSER_BUCKET}/data/INGESTION/hospitalA_mysqlToLanding.py"
 PYSPARK_JOB_1 = {
@@ -64,7 +64,7 @@ with DAG(
 ) as dag:
 
     #define the tasks
-    start_cluster = DataprocstartClusterOperator(
+    start_cluster = DataprocStartClusterOperator(
         task_id = "start_cluster",
         project_id = PROJECT_ID,
         region = REGION,

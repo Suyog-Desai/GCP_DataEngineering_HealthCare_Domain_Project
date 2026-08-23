@@ -1,12 +1,12 @@
 from airflow import DAG
 from airflow.utils.dates import days_ago
-from airflow.operators.dagrun_operator import TriggerDagRunOperator
+from airflow.operators.trigger_dagrun  import TriggerDagRunOperator
 from datetime import timedelta
 
 #Define the default arguments
 
 ARGS = {
-    "onwer":"Suyog Desai",
+    "owner":"Suyog Desai",
     "start_date": days_ago(1),
     "email_on_past": True,
     "email_on_failure":True,
@@ -30,14 +30,14 @@ with DAG (
     #task to trigger pyspark job
     pyspark_task = TriggerDagRunOperator(
         task_id = "pyspark_task",
-        trigger_dag_id = "DAG_Pyspark",
+        trigger_dag_id = "pyspark_dag",
         wait_for_completion = True
     )
 
     #task to trigger bigquery job
     big_query_task = TriggerDagRunOperator(
         task_id = "big_query_task",
-        trigger_dag_id = "DAG_BQ",
+        trigger_dag_id = "bigquery_dag",
         wait_for_completion = True
     )
 
