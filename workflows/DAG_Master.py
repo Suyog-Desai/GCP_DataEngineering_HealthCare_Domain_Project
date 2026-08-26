@@ -7,7 +7,8 @@ from datetime import timedelta
 
 ARGS = {
     "owner":"Suyog Desai",
-    "start_date": days_ago(1),
+    #"start_date": days_ago(1),
+    "start_date": None,
     "email_on_past": True,
     "email_on_failure":True,
     "email_on_retry":True,
@@ -22,7 +23,7 @@ ARGS = {
 with DAG (
     dag_id = "master_dag",
     default_args = ARGS ,
-    schedule_interval = "0 5 * * *",
+    #schedule_interval = "0 5 * * *",
     description = "Parent DAG to trigger PySpark and BigQuery DAGs",
     tags = ["parent", "orchestration", "etl"]
 ) as dag:
